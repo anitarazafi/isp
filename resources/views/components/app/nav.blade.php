@@ -21,9 +21,19 @@
             <a href="about.html" class="nav-item nav-link">Find Programs</a>
             <a href="service.html" class="nav-item nav-link">Forum</a>
             <a href="package.html" class="nav-item nav-link">Student Guide</a>
-            <a href="package.html" class="nav-item nav-link">More</a>
+            <div class="nav-item dropdown">
+                <a
+                    href="#"
+                    class="nav-link dropdown-toggle"
+                    data-bs-toggle="dropdown"
+                >More</a
+                >
+                <div class="dropdown-menu m-0">
+                    <a href="destination.html" class="dropdown-item">Blog</a>
+                </div>
+            </div>
             <a href="package.html" class="nav-item nav-link">Support</a>
         </div>
-        <a href="" class="btn btn-primary rounded-pill py-2 px-4">Register</a>
+        <a href="/register" class="btn btn-primary rounded-pill py-2 px-4">Register</a>
     </div>
 </nav>
