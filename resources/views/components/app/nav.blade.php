@@ -17,10 +17,10 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto py-0">
-            <a href="index.html" class="nav-item nav-link active">About us</a>
-            <a href="about.html" class="nav-item nav-link">Find Programs</a>
-            <a href="service.html" class="nav-item nav-link">Forum</a>
-            <a href="package.html" class="nav-item nav-link">Student Guide</a>
+            <a href="/about" class="nav-item nav-link active">About us</a>
+            <a href="/programs" class="nav-item nav-link">Find Programs</a>
+            <a href="/forum" class="nav-item nav-link">Forum</a>
+            <a href="/student-guide" class="nav-item nav-link">Student Guide</a>
             <div class="nav-item dropdown">
                 <a
                     href="#"
@@ -29,11 +29,20 @@
                 >More</a
                 >
                 <div class="dropdown-menu m-0">
-                    <a href="destination.html" class="dropdown-item">Blog</a>
+                    <a href="/job-offer" class="dropdown-item">Job offer</a>
+                    <a href="/looking-for-a-job" class="dropdown-item">Looking for a job</a>
+                    <a href="/accommodation" class="dropdown-item">Accommodation</a>
+                    <a href="/looking-for-accommodation" class="dropdown-item">Looking for accommodation</a>
+                    <a href="/scholarships" class="dropdown-item">Scholarships</a>
+                    <a href="/other-posts" class="dropdown-item">Other</a>
                 </div>
             </div>
-            <a href="package.html" class="nav-item nav-link">Support</a>
+            <a href="/contact" class="nav-item nav-link">Support</a>
         </div>
-        <a href="/register" class="btn btn-primary rounded-pill py-2 px-4">Register</a>
+        @if(Auth::check())
+            <a href="/admin/dashboard" class="btn btn-primary rounded-pill py-2 px-4">My account</a>
+        @else
+            <a href="/login" class="btn btn-primary rounded-pill py-2 px-4">Login</a>
+        @endif
     </div>
 </nav>
