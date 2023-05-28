@@ -1,52 +1,73 @@
+@php
+    $countries = getAllCountries();
+@endphp
 <form method="POST" action="{{ route('register') }}">
     @csrf
-
-
-
-    <!-- Name -->
-    <div>
-        <x-input-label for="name" :value="__('Name')" />
-        <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-        <x-input-error :messages="$errors->get('name')" class="mt-2" />
+    <div class="input-group mb-3">
+        <input id="first_name" name="first_name" type="text" class="form-control" placeholder="First name" value="{{old('first_name')}}" required autofocus autocomplete="first_name">
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-user"></span>
+            </div>
+        </div>
+        <x-input-error :messages="$errors->get('first_name')" class="mt-2" />
     </div>
 
-    <!-- Email Address -->
-    <div class="mt-4">
-        <x-input-label for="email" :value="__('Email')" />
-        <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
+    <div class="input-group mb-3">
+        <input id="last_name" name="last_name" type="text" class="form-control" placeholder="Last name" value="{{old('last_name')}}" required autocomplete="last_name">
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-user"></span>
+            </div>
+        </div>
+        <x-input-error :messages="$errors->get('last_name')" class="mt-2" />
+    </div>
+
+    <div class="input-group mb-3">
+        <input id="email" name="email" type="email" class="form-control" placeholder="Email" value="{{old('email')}}" required autocomplete="email">
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-envelope"></span>
+            </div>
+        </div>
         <x-input-error :messages="$errors->get('email')" class="mt-2" />
     </div>
 
-    <!-- Password -->
-    <div class="mt-4">
-        <x-input-label for="password" :value="__('Password')" />
-
-        <x-text-input id="password" class="block mt-1 w-full"
-                      type="password"
-                      name="password"
-                      required autocomplete="new-password" />
-
+    <div class="input-group mb-3">
+        <input id="password" name="password" type="password" class="form-control" placeholder="Password" value="{{old('password')}}" required autocomplete="password">
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+            </div>
+        </div>
         <x-input-error :messages="$errors->get('password')" class="mt-2" />
     </div>
 
-    <!-- Confirm Password -->
-    <div class="mt-4">
-        <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-        <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                      type="password"
-                      name="password_confirmation" required autocomplete="new-password" />
-
+    <div class="input-group mb-3">
+        <input id="password_confirmation" name="password_confirmation" type="password" class="form-control" placeholder="Retype your password" value="{{old('password')}}" required autocomplete="password">
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+            </div>
+        </div>
         <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
     </div>
 
-    <div class="flex items-center justify-end mt-4">
-        <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-            {{ __('Already registered?') }}
-        </a>
+    <div class="form-group">
+        <select class="form-control" id="country" name="country" required>
+            <option disabled selected>Country</option>
+            @foreach($countries as $country)
+                <option value="{{$country}}">{{$country}}</option>
+            @endforeach
+        </select>
+        <x-input-error :messages="$errors->get('country')" class="mt-2" />
+    </div>
 
-        <x-primary-button class="ml-4">
-            {{ __('Register') }}
-        </x-primary-button>
+    <div class="row">
+        <!-- /.col -->
+        <div class="col-4">
+            <button type="submit" class="btn btn-primary btn-block">Register</button>
+        </div>
+        <!-- /.col -->
     </div>
 </form>
