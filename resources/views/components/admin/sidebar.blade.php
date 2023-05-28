@@ -8,7 +8,7 @@
                 <img src="{{getUserImage()}}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="" class="d-block">{{Auth::user()->first_name. " " .Auth::user()->last_name}}</a>
+                <a href="/admin/profile" class="d-block">{{Auth::user()->first_name. " " .Auth::user()->last_name}}</a>
             </div>
         </div>
         <nav class="mt-2">
@@ -25,7 +25,7 @@
                     <a href="pages/widgets.html" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
-                            Profile
+                            Menu
                         </p>
                     </a>
                 </li>
