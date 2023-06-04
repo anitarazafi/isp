@@ -6,6 +6,22 @@
         {{$title}}
     @endsection
 
+    <div class="mb-5">
+        <strong>Account type: </strong>
+        @if($user->role_id === 0)
+            <span class="text-success">
+                Admin
+            </span>
+        @elseif($user->role_id === 1)
+            <span class="text-success">
+                Moderator
+            </span>
+        @elseif($user->role_id === 2)
+            <span class="text-success">
+                Standard
+            </span>
+        @endif
+    </div>
     <div class="row justify-content-center">
         <div class="col-12 col-md-6">
             <div class="card card-primary">
