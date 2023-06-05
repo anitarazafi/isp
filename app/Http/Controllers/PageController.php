@@ -11,4 +11,10 @@ class PageController extends Controller
             'title' => "About"
         ]);
     }
+
+    public function contact(){
+        return view('app.contact', [
+            'title' => "Contact us"
+        ]);
+    }
 }

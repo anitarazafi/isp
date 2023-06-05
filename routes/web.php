@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminContactMessageController;
 use App\Http\Controllers\AdminProgramController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
@@ -22,6 +23,8 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/programs', [ProgramController::class, 'index']);
 Route::get('/programs/{program}', [ProgramController::class, 'show']);
 Route::get('/about', [PageController::class, 'about']);
+Route::get('/contact', [PageController::class, 'contact']);
+Route::post('/contact', [AdminContactMessageController::class, 'store']);
 
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
@@ -47,6 +50,8 @@ Route::middleware('auth')->group(function () {
             Route::put('/{program}', [AdminProgramController::class, 'update']);
             Route::delete('/{program}', [AdminProgramController::class, 'destroy']);
         });
+
+        Route::get('/admin/contact-messages', [AdminContactMessageController::class, 'index']);
     });
 });
 
