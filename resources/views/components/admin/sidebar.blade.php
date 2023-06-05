@@ -21,14 +21,17 @@
                         </div>
                     </form>
                 </li>
-                <li class="nav-item">
-                    <a href="pages/widgets.html" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
-                        <p>
-                            Menu
-                        </p>
-                    </a>
-                </li>
+                @if(Auth::user()->role_id === 0)
+                    <h4 class="text-success">Admin zone:</h4>
+                    <li class="nav-item">
+                        <a href="/admin/programs" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                Programs
+                            </p>
+                        </a>
+                    </li>
+                @endif
             </ul>
         </nav>
     </div>

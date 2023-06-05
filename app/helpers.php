@@ -9,6 +9,15 @@ function getAllCountries(): array
     ];
 }
 
+function getAllDegrees(): array {
+    return [
+        "Associate",
+        "Bachelor's",
+        "Master's",
+        "Doctoral"
+    ];
+}
+
 function getUserImage(){
     if(isset(Auth::user()->image)) {
         return asset('storage/' . Auth::user()->image);

@@ -1,7 +1,7 @@
 <nav
     class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0"
 >
-    <a href="" class="navbar-brand p-0">
+    <a href="/" class="navbar-brand p-0">
         <h1 class="text-primary m-0">
             <i class="fa fa-map-marker-alt me-3"></i>ISP
         </h1>
@@ -17,7 +17,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto py-0">
-            <a href="/about" class="nav-item nav-link active">About us</a>
+            <a href="/about" class="nav-item nav-link">About us</a>
             <a href="/programs" class="nav-item nav-link">Find Programs</a>
             <a href="/forum" class="nav-item nav-link">Forum</a>
             <a href="/student-guide" class="nav-item nav-link">Student Guide</a>
