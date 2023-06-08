@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminContactMessageController;
+use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\AdminProgramController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
@@ -49,6 +50,16 @@ Route::middleware('auth')->group(function () {
             Route::get('/{program}/edit', [AdminProgramController::class, 'edit']);
             Route::put('/{program}', [AdminProgramController::class, 'update']);
             Route::delete('/{program}', [AdminProgramController::class, 'destroy']);
+        });
+
+        Route::prefix('/admin/posts')->group(function (){
+            Route::get('/', [AdminPostController::class, 'index']);
+            Route::get('/create', [AdminPostController::class, 'create']);
+            Route::post('/', [AdminPostController::class, 'store']);
+            Route::get('/{post}/edit', [AdminPostController::class, 'edit']);
+            Route::post('/{post}/approve', [AdminPostController::class, 'approve']);
+            Route::put('/{post}', [AdminPostController::class, 'update']);
+            Route::delete('/{post}', [AdminPostController::class, 'destroy']);
         });
 
         Route::get('/admin/contact-messages', [AdminContactMessageController::class, 'index']);

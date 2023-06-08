@@ -39,6 +39,14 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="/admin/posts" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                Posts
+                            </p>
+                        </a>
+                    </li>
                 @endif
             </ul>
         </nav>
