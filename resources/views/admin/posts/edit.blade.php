@@ -41,6 +41,11 @@
                     @method('put')
                     <div class="card-body">
                         <div class="form-group">
+                            <label for="title">Title</label>
+                            <input name="title" type="text" class="form-control" id="title" value="{{old('title', $post->title)}}">
+                            <x-input-error :messages="$errors->get('title')" class="mt-2" />
+                        </div>
+                        <div class="form-group">
                             <select class="form-control" id="topic_id" name="topic_id" required>
                                 <option disabled selected>Topic</option>
                                 @foreach($topics as $topic)

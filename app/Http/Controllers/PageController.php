@@ -17,4 +17,5 @@ class PageController extends Controller
             'title' => "Contact us"
         ]);
     }
+
 }

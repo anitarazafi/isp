@@ -47,6 +47,22 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="/admin/questions" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                Questions
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/admin/answers" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                Answers
+                            </p>
+                        </a>
+                    </li>
                 @endif
             </ul>
         </nav>

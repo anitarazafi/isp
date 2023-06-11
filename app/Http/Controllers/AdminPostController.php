@@ -27,6 +27,7 @@ class AdminPostController extends Controller
 
     public function store(Request $request){
         $formFields = $request->validate([
+            'title' => ['required', 'string', 'max:255'],
             'topic_id' => ['required'],
             'post_country' => ['required', 'string', 'max:255'],
             'image' => ['nullable', 'mimes:png,jpeg,jpg,gif'],
@@ -35,9 +36,12 @@ class AdminPostController extends Controller
 
         if($request->file('image')){
            $formFields['image']  = $request->file('image')->store('profile-pictures', 'public');
+        } else {
+            $formFields['image'] = null;
         }
 
         $post = Post::create([
+            'title' => $formFields['title'],
             'user_id' => $request->user()->id,
             'topic_id' => $formFields['topic_id'],
             'post_country' => $formFields['post_country'],
@@ -61,6 +65,7 @@ class AdminPostController extends Controller
 
     public function update(Request $request, Post $post){
         $formFields = $request->validate([
+            'title' => ['required', 'string', 'max:255'],
             'topic_id' => ['required'],
             'post_country' => ['required', 'string', 'max:255'],
             'image' => ['nullable', 'mimes:png,jpeg,jpg,gif'],
@@ -68,7 +73,9 @@ class AdminPostController extends Controller
         ]);
 
         if($request->file('image')){
-            $formFields['image']  = $request->file('image')->store('profile-pictures', 'public');
+            $formFields['image']  = $request->file('image')->store('posts', 'public');
+        } else {
+            $formFields['image'] = null;
         }
 
         $post->update($formFields);
