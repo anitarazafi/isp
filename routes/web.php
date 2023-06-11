@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminContactMessageController;
 use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\AdminProgramController;
+use App\Http\Controllers\AdminQuestionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
@@ -62,6 +63,15 @@ Route::middleware('auth')->group(function () {
             Route::post('/{post}/approve', [AdminPostController::class, 'approve']);
             Route::put('/{post}', [AdminPostController::class, 'update']);
             Route::delete('/{post}', [AdminPostController::class, 'destroy']);
+        });
+
+        Route::prefix('/admin/questions')->group(function (){
+            Route::get('/', [AdminQuestionController::class, 'index']);
+            Route::get('/create', [AdminQuestionController::class, 'create']);
+            Route::post('/', [AdminQuestionController::class, 'store']);
+            Route::get('/{question}/edit', [AdminQuestionController::class, 'edit']);
+            Route::put('/{question}', [AdminQuestionController::class, 'update']);
+            Route::delete('/{question}', [AdminQuestionController::class, 'destroy']);
         });
 
         Route::get('/admin/contact-messages', [AdminContactMessageController::class, 'index']);
