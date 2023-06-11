@@ -9,6 +9,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\QuestionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +30,9 @@ Route::get('/about', [PageController::class, 'about']);
 Route::get('/contact', [PageController::class, 'contact']);
 Route::post('/contact', [AdminContactMessageController::class, 'store']);
 Route::get('/student-guides', [PostController::class, 'guides']);
+Route::get('/forum', [QuestionController::class, 'index']);
+Route::get('/questions/create', [QuestionController::class, 'create']);
+Route::post('/questions', [QuestionController::class, 'store']);
 
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
@@ -40,6 +44,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/admin/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/admin/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+
 
     Route::get('/admin/dashboard', function () {
         return view('admin.dashboard');
@@ -67,11 +73,13 @@ Route::middleware('auth')->group(function () {
 
         Route::prefix('/admin/questions')->group(function (){
             Route::get('/', [AdminQuestionController::class, 'index']);
-            Route::get('/create', [AdminQuestionController::class, 'create']);
-            Route::post('/', [AdminQuestionController::class, 'store']);
             Route::get('/{question}/edit', [AdminQuestionController::class, 'edit']);
             Route::put('/{question}', [AdminQuestionController::class, 'update']);
             Route::delete('/{question}', [AdminQuestionController::class, 'destroy']);
+        });
+
+        Route::prefix('/admin/answers')->group(function (){
+
         });
 
         Route::get('/admin/contact-messages', [AdminContactMessageController::class, 'index']);
