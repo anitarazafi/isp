@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\AdminContactMessageController;
+use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\AdminProgramController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgramController;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +27,7 @@ Route::get('/programs/{program}', [ProgramController::class, 'show']);
 Route::get('/about', [PageController::class, 'about']);
 Route::get('/contact', [PageController::class, 'contact']);
 Route::post('/contact', [AdminContactMessageController::class, 'store']);
+Route::get('/student-guides', [PostController::class, 'guides']);
 
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
@@ -49,6 +52,16 @@ Route::middleware('auth')->group(function () {
             Route::get('/{program}/edit', [AdminProgramController::class, 'edit']);
             Route::put('/{program}', [AdminProgramController::class, 'update']);
             Route::delete('/{program}', [AdminProgramController::class, 'destroy']);
+        });
+
+        Route::prefix('/admin/posts')->group(function (){
+            Route::get('/', [AdminPostController::class, 'index']);
+            Route::get('/create', [AdminPostController::class, 'create']);
+            Route::post('/', [AdminPostController::class, 'store']);
+            Route::get('/{post}/edit', [AdminPostController::class, 'edit']);
+            Route::post('/{post}/approve', [AdminPostController::class, 'approve']);
+            Route::put('/{post}', [AdminPostController::class, 'update']);
+            Route::delete('/{post}', [AdminPostController::class, 'destroy']);
         });
 
         Route::get('/admin/contact-messages', [AdminContactMessageController::class, 'index']);

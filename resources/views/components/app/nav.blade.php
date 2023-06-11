@@ -34,7 +34,7 @@
                     <a href="/accommodation" class="dropdown-item">Accommodation</a>
                     <a href="/looking-for-accommodation" class="dropdown-item">Looking for accommodation</a>
                     <a href="/scholarships" class="dropdown-item">Scholarships</a>
-                    <a href="/other-posts" class="dropdown-item">Other</a>
+                    <a href="/posts" class="dropdown-item">All</a>
                 </div>
             </div>
             <a href="/contact" class="nav-item nav-link">Support</a>

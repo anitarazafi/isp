@@ -17,11 +17,7 @@
                 <form action="/admin/programs" method="post">
                     @csrf
                     <div class="card-body">
-                        <div class="form-group">
-                            <label for="program_name">Program name</label>
-                            <input name="program_name" type="text" class="form-control" id="program_name" placeholder="Computer Science" value="{{old('program_name')}}">
-                            <x-input-error :messages="$errors->get('program_name')" class="mt-2" />
-                        </div>
+                        c
                         <div class="form-group">
                             <label for="faculty">Faculty name</label>
                             <input name="faculty" type="text" class="form-control" id="faculty" placeholder="Faculty of Applied Science" value="{{old('faculty')}}">

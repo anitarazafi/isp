@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 
 function getAllCountries(): array
@@ -23,5 +24,13 @@ function getUserImage(){
         return asset('storage/' . Auth::user()->image);
     } else {
         return asset('img/user.jpeg');
+    }
+}
+
+function getPostImage(Post $post){
+    if(isset($post->image)){
+        return asset('/storage/'. $post->image);
+    } else {
+        return asset('img/image_1.png');
     }
 }
