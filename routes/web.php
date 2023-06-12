@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminContactMessageController;
 use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\AdminProgramController;
 use App\Http\Controllers\AdminQuestionController;
+use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
@@ -25,7 +26,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/programs', [ProgramController::class, 'index']);
-Route::get('/programs/{program}', [ProgramController::class, 'show']);
+
 Route::get('/about', [PageController::class, 'about']);
 Route::get('/contact', [PageController::class, 'contact']);
 Route::post('/contact', [AdminContactMessageController::class, 'store']);
@@ -45,11 +46,13 @@ Route::middleware('auth')->group(function () {
     Route::patch('/admin/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/admin/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-
-
     Route::get('/admin/dashboard', function () {
         return view('admin.dashboard');
     })->name('dashboard');
+
+    Route::get('/programs/{program}', [ProgramController::class, 'show']);
+    Route::get('/questions/{question}', [QuestionController::class, 'show']);
+    Route::post('/{question}/answer', [AnswerController::class, 'store']);
 
     Route::middleware('admin')->group(function (){
         Route::prefix('/admin/programs')->group(function (){
